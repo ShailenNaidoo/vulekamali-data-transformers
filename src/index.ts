@@ -15,6 +15,7 @@ const provincialData = ['Eastern Cape','Free State','Gauteng','Limpopo','Mpumala
   government: province,
 }));
 
+// @ts-ignore
 const a = outputProvincial({ total: 10000000, data: provincialData });
 
 console.log(JSON.stringify(a,null,2));

@@ -16,7 +16,10 @@ type TprovincialInput = {
   government: Tgovernment,
 }
 
-type inputProvincial = TprovincialInput[]; // province will always have a value here
+type inputProvincial = {
+  total: Ttotal,
+  data: TprovincialInput[]
+}
 
 type TnationalItem = {
   id: Tid,
@@ -35,24 +38,25 @@ type TprovincialItem = {
 }
 
 type outputProvincial = {
-  'Eastern Cape': TprovincialItem,
-  'Free State': TprovincialItem,
-  'Gauteng': TprovincialItem,
-  'Limpopo': TprovincialItem,
-  'Mpumalanga': TprovincialItem,
-  'KwaZulu-Natal': TprovincialItem,
-  'Northern Cape': TprovincialItem,
-  'Western Cape': TprovincialItem,
-  'North West': TprovincialItem,
+  total: Ttotal,
+  provinces: {
+    'Eastern Cape': TprovincialItem,
+    'Free State': TprovincialItem,
+    'Gauteng': TprovincialItem,
+    'Limpopo': TprovincialItem,
+    'Mpumalanga': TprovincialItem,
+    'KwaZulu-Natal': TprovincialItem,
+    'Northern Cape': TprovincialItem,
+    'Western Cape': TprovincialItem,
+    'North West': TprovincialItem,
+  }
 }
 
-// @ts-ignore
-export default ({ total, data }) => {
+export default ({ total, data } : inputProvincial) : outputProvincial => {
   const root = ['Eastern Cape','Free State','Gauteng','Limpopo','Mpumalanga','Northern Cape','Western Cape','North West'].map((province) => {
 
-    // @ts-ignore
     const children = data.filter(item => item.government === province).map(({ government, ...data }) => data);
-    // @ts-ignore
+
     const amount = children.reduce((res,val) => val.amount + res,0);
 
     const percentage = (amount / total) * 100; 
@@ -69,7 +73,7 @@ export default ({ total, data }) => {
 
   return {
     total,
-    //@ts-ignore
+    // @ts-ignore
     provinces: Object.assign(...root)
   }
 }
