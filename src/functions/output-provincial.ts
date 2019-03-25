@@ -1,36 +1,36 @@
-type id = string;
-type name = string;
-type amount = number;
-type total = number;
-type url = string;
-type percentage = number;
+type Tid = string;
+type Tname = string;
+type Tamount = number;
+type Ttotal = number;
+type Turl = string;
+type Tpercentage = number;
 
 type Tgovernment = 'Eastern Cape' | 'Free State' | 'Gauteng' | 'Limpopo' | 'Mpumalanga' | 'KwaZulu-Natal' | 'Northern Cape' | 'Western Cape' | 'North West' | 'South Africa';
 
 type TprovincialInput = {
-  slug: id,
-  amount: amount,
-  detail: url,
-  name: name,
-  percentage_of_total: percentage,
+  slug: Tid,
+  amount: Tamount,
+  detail: Turl,
+  name: Tname,
+  percentage_of_total: Tpercentage,
   government: Tgovernment,
 }
 
 type inputProvincial = TprovincialInput[]; // province will always have a value here
 
 type TnationalItem = {
-  id: id,
-  name: name,
-  amount: amount,
-  url: url,
-  percentage: percentage,
+  id: Tid,
+  name: Tname,
+  amount: Tamount,
+  url: Turl,
+  percentage: Tpercentage,
 }
 
 type TprovincialItem = {
-  id: id,
-  name: name,
-  amount: amount,
-  percentage: percentage,
+  id: Tid,
+  name: Tname,
+  amount: Tamount,
+  percentage: Tpercentage,
   children: TnationalItem[],
 }
 

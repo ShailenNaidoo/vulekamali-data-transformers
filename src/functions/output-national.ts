@@ -1,25 +1,25 @@
-type id = string;
-type name = string;
-type amount = number;
-type url = string;
-type percentage = number;
+type Tid = string;
+type Tname = string;
+type Tamount = number;
+type Turl = string;
+type Tpercentage = number;
 
 type TnationalInput = {
-  slug: id,
-  amount: amount,
-  detail: url,
-  name: name,
-  percentage_of_total: percentage,
+  slug: Tid,
+  amount: Tamount,
+  detail: Turl,
+  name: Tname,
+  percentage_of_total: Tpercentage,
 }
 
 type inputNational = TnationalInput[]; // province will always be `null` here
 
 type TnationalItem = {
-  id: id,
-  name: name,
-  amount: amount,
-  url: url,
-  percentage: percentage,
+  id: Tid,
+  name: Tname,
+  amount: Tamount,
+  url: Turl,
+  percentage: Tpercentage,
 }
 
 type outputNational = TnationalItem[];
