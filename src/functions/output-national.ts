@@ -24,7 +24,7 @@ type TnationalItem = {
 
 type outputNational = TnationalItem[];
 
-export default (data : inputNational) : outputNational => data.map(({ slug, amount, detail, name, percentage_of_total }) => ({
+export default (items : inputNational) : outputNational => items.map(({ slug, amount, detail, name, percentage_of_total }) => ({
   id: slug,
   name,
   amount,

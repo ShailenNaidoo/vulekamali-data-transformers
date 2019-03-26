@@ -18,7 +18,7 @@ type TprovincialInput = {
 
 type inputProvincial = {
   total: Ttotal,
-  data: TprovincialInput[]
+  items: TprovincialInput[]
 }
 
 type TnationalItem = {
@@ -52,10 +52,10 @@ type outputProvincial = {
   }
 }
 
-export default ({ total, data } : inputProvincial) : outputProvincial => {
+export default ({ total, items } : inputProvincial) : outputProvincial => {
   const root = ['Eastern Cape','Free State','Gauteng','Limpopo','Mpumalanga','Northern Cape','Western Cape','North West'].map((province) => {
 
-    const children = data.filter(item => item.government === province).map(({ government, ...data }) => data);
+    const children = items.filter(item => item.government === province).map(({ government, ...data }) => data);
 
     const amount = children.reduce((res,val) => val.amount + res,0);
 
