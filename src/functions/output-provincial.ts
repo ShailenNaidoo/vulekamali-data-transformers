@@ -55,10 +55,11 @@ type outputProvincial = {
 export default ({ total, items } : inputProvincial) : outputProvincial => {
   const provinces = ['Eastern Cape','Free State','Gauteng','Limpopo','Mpumalanga','Northern Cape','Western Cape','North West'].reduce(
     (result, provinceName) => {
-      const children = items.filter(item => item.government === provinceName).map(({ government, slug, percentage_of_total, ...data }) => ({
+      const children = items.filter(item => item.government === provinceName).map(({ government, slug, percentage_of_total, detail, ...data }) => ({
         ...data,
         id: slug,
-        percentage: percentage_of_total
+        url: detail,
+        percentage: percentage_of_total,
       }));
       const amount = children.reduce((result, { amount }) => result + amount, 0);
       const percentage = (amount / total) * 100;
